@@ -1,0 +1,36 @@
+nodejs angular etc
+
+Node Version Manager - Simple bash script to manage multiple active node.js versions
+
+# Installing node.js
+You should install node.js with nvm, because that way you do not have to provide superuser privileges when installing global packages (you can simply execute "npm install -g packagename" without prepending 'sudo').
+
+Brew is fantastic for other things, however. I tend to be biased towards Bower whenever I have the option to install something with Bower.
+
+# I installed node and npm from https://nodejs.org/en/#download.  Installed them into /usr/local
+
+Express.js is a Node.js web application server framework, designed for building single-page, multi-page, and hybrid web applications.[1] It is the de facto standard server framework for node.js.[2] The original author, TJ Holowaychuck, described it as a Sinatra-inspired server,[3] meaning that it is relatively minimal with many features available as plugins.
+
+Express is the backend part of the MEAN stack, together with MongoDB database and AngularJS frontend framework.
+
+npm install express -g
+npm install -g express-generator
+
+# brew install mongodb
+To have launchd start mongodb at login:
+  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
+Then to load mongodb now:
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+Or, if you don't want/need launchctl, you can just run:
+  mongod --config /usr/local/etc/mongod.conf
+
+  # Start mongodb:
+  mongod
+     ltrwaiting for connections on port 27017
+
+
+# Install bower:
+npm install -g bower
+
+# update npm:
+npm update -g npm

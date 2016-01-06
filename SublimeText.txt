@@ -1,0 +1,182 @@
+SublimeText
+
+Problem with https://packagecontrol.io/doc/settings
+
+cmd-shift-[ :  previous tab
+Jump Back/Jump Forward (to previous editing positions):
+    jump_back, jump_forward
+    Ctrl-Minus:  jump_back
+    Ctrl-Shift-Minus:  jump_forward
+
+Select all words: Ctrl-cmd-G
+
+Line select: Ctrl-Cmd-L
+Find-Replace:  cmd-option-F
+Find-in-All-Files:  cmd-shift-F
+
+Open Find in Files  Ctrl + Shift + F
+Toggle regular expressions  Alt + R
+Toggle case sensitivity Alt + C
+Toggle exact matches    Alt + W
+Find next   Enter
+
+Instant search:  Cmd-I
+Open File:  Cmd-P
+Browse Directory:  Cmt-O
+
+Command Palate:  Shift-Cmd-P
+
+Go To Anything (fuzzy search for files):  
+    Cmd-P
+      @methodName
+      :18   (to go to line 18)
+
+Browse symbols: Cmd-R
+
+Toggle sidebar: Cmd K-B
+
+Distraction Free Mode
+    cmd-ctl-Shift-F
+
+Package Control
+    Shift-Cmd-P
+        install <CR>   # lists all packages that can be installed 
+
+Python Console (terminal):  
+    Ctrl- ~
+    The embedded interpreter is only intended to interact with the plugin API, not for general development.
+
+Selection:
+    Entire line:  Cmd-L
+    Code with same indention:  cmd-shift-J
+    All in HTML tag:  ⌘-SHIFT-A
+
+Lines:
+    Delete line: CTRL-SHIFT-K
+    Insert line above:  Cmd-Shift-Return
+    Insert line under:  Cmd-Return
+
+Indent:
+    ⌘-] , ⌘-[
+
+Snippets:
+    When creating my own, must end with "sublime-snippet"
+
+## Projects ##
+in XXX.sublime-project:
+{
+    "folders":
+    [
+        {
+            "path": "/Library/WebServer/Documents/blog",
+                "file_exclude_patterns": ["*.css"],
+                "folder_exclude_patterns": ["js"]
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 4
+    }
+}
+
+## Build Systems ##
+cmd-B
+
+## Split Windows ##
+opt-cmd-2: split to 2 windows
+ctr-shift-1:  move file to window #1
+opt-cmd-right:  make more room on left window
+opt-cmd-left:   make more room for right window
+
+alt-1, etc:  move file to window 1
+
+# Disable a package:
+ Preferences > Package Control > Package Control: Disable Packages > Choose 'Vintage'
+
+## Plug-ins:  ##
+
+# Emmmet
+ul>li*4
+
+# HttpRequestor 
+https://github.com/braindamageinc/SublimeHttpRequester/tree/st3
+
+Select the text that represents an URL. Examples of requests:
+
+    http://www.google.com/search?q=test
+    GET http://www.google.com/search?q=test
+    www.google.com/search?q=test
+
+    POST http://posttestserver.com/post.php
+    POST_BODY:
+    this is the body that will be sent via HTTP POST
+    a second line for body message
+
+Cmd-Opt-R on selected link 
+
+# LiveReload
+Installed on Chrome, but need to purchase it for MAC.
+Doesn't exist for Sublime Text 2 (or 3?)
+
+# AdvancedNewFile
+https://github.com/skuroda/Sublime-AdvancedNewFile
+cmd-alt-n
+
+# ColorPicker
+cmd-shift-c
+
+# Emmet
+ctrl-E Expand Abbreviation
+
+# SidebarEnhancements:  Sublime 3 only
+
+# SublimeLinter
+Lints when file is saved
+
+# Gist (to save snippets)
+Not installed yet
+
+# PHP Companion:  Sublime 3 only
+# Have to create my own keyboard short-cuts:
+    { "keys": ["f9"], "command": "expand_fqcn" },
+    { "keys": ["shift+f9"], "command": "expand_fqcn", "args": {"leading_separator": true} },
+    { "keys": ["f10"], "command": "find_use" },
+    { "keys": ["f8"], "command": "import_namespace" },
+    { "keys": ["shift+f12"], "command": "goto_definition_scope" }
+
+
+# AllAutoComplete Sublime 3 only
+
+# Terminal:  opens up a terminal in the file or project folder:
+Open Terminal at File Press: cmd+shift+t 
+Open Terminal at Project Folder: cmd+alt+shift+t 
+
+# SublimeFunctionNameDisplay
+
+# Ctags (3 only)
+https://github.com/SublimeText/CTags
+
+#Command Key Binding Alt Binding Mouse Binding
+rebuild_ctags   ctrl+t, ctrl+r       
+navigate_to_definition  ctrl+t, ctrl+t  ctrl+>  ctrl+shift+left_click
+jump_prev   ctrl+t, ctrl+b  ctrl+<  ctrl+shift+right_click
+show_symbols    alt+s        
+show_symbols (all files)    alt+shift+s      
+show_symbols (suffix)   
+
+# CodeBug for Xdebug (Sublime 3). logs in /var/tmp.
+# Add to project file:
+
+    "settings" : {
+        "xdebug" : {
+            "url" : "http://localhost/blog/"
+        }
+    # 
+
+    #Vintage/Vintageous
+
+
+
+
+
+

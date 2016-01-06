@@ -1,0 +1,104 @@
+
+
+DynamicConfigurator.java:
+// Read and parse (xml) file
+            URL resourceURL = getClass().getResource(resourcePath);
+            if (resourceURL == null) {
+                throw new IOException(resource + " could not be found in the classpath");
+            }
+            try (InputStream is = resourceURL.openStream();
+                    InputStreamReader isr = new InputStreamReader(is, Charsets.UTF_8)) {
+                String text = new Scanner(isr).useDelimiter("\\A").next();
+                configurationWriter.write(fullPath, text);
+            }
+
+# DynamicConfigurator, line 72
+What is input ?
+        Properties configuration = configurationReader.read(resourcePath,
+                input -> {
+                    LOGGER.info("Received changes [{}] from path [{}]", input.toString(), resourcePath);
+                    bean.configure(input);
+                }
+        );
+
+
+# Casting
+# InMemoryConfigReader.java:
+
+T> T doSomething(Class<T> cls) {
+    Object o;
+    // snip
+    return cls.cast(o);
+}
+
+# Apache Pair :-)
+org.apache.commons.lang3.tuple.Pair<L, R>
+
+# Guava:
+   public String taskIdFormater(final String sourceID, final String providerID, final String externalID) {
+        return Joiner.on(TASK_ID_PART_SEPARATOR).useForNull(TASK_ID_NULL_PART).join(sourceID, providerID, externalID);
+    }
+
+
+##### Paths, Files
+
+Files.createTempFile
+Files.copy
+
+Path destinationDirectory = Paths.get(rootOutputDirectory, subdirectory);
+if (!Files.exists(destinationDirectory)) {
+    try {
+        LOGGER.info("Creating missing directory: " + destinationDirectory.toString());
+        Files.createDirectory(destinationDirectory);
+    } catch (IOException e) {
+       ...
+    }
+}
+
+
+### Dev/PROD
+Profile: the Spring profile defines which instance of Configuration Reader/Writer will be used.
+Use the following Java environment property to control which one you want to use:
+-Dspring.profiles.active=DEV (In Memory)
+-Dspring.profiles.active=PROD (Zookeeper)
+
+If no profile is defined, the default Zookeeper implementation will be used.
+
+#  Encode special characters in URL
+encodedSourceId = sourceId.equals(ReportGeneratorProcessor.ALL_SOURCE_REPORTS) ?StringEscapeUtils.escapeHtml(sourceId) : sourceId
+
+##### Function example:
+public class ElongFilteringTask implements Function<SupplierContext, Optional<StagingKey>> {
+
+### Regex
+   private static final Pattern regex = Pattern.compile("source\\.(?<sourceid>.*)\\.provider\\.(?<providerid>.*)\\.processor\\.list");
+
+    public static void main(String[] args) {
+        String configKey = "source.jumbotours.provider.aggregator.processor.list";
+        Matcher matcher = regex.matcher(configKey);
+        if (matcher.matches()) {
+            matcher.group("sourceid");
+            matcher.group("providerid");
+        } else {
+            System.out.println("No Match");
+        }
+    }
+
+
+### Optional with map
+ShellSearchResponseInterpreterImpl.java:
+    Optional<ShellMapping> shellMapping = shellDedupingServiceResult.getStagingKeys().stream()
+            .filter(s -> s.getSourceId().equalsIgnoreCase(Sources.LCM.getName())
+                    && s.getProviderId().equalsIgnoreCase(Providers.LCM.getName())
+                    && Boolean.TRUE.equals(s.getMasterMatch()))
+            .findFirst();
+    if (shellMapping.isPresent()) {
+        expediaId = shellMapping
+                .map(ShellMapping::getExternalId)
+                .map(Integer::parseInt);
+
+# Check if BigDecimal is in a range
+filter(rating -> MIN_RATING.compareTo(rating.getValue()) > 0 || MAX_RATING.compareTo(rating.getValue()) < 0)
+
+
+

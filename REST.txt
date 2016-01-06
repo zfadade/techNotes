@@ -1,0 +1,8 @@
+REST
+
+REST - CRUD:
+
+GET:	Read
+POST:	Create
+PUT:	Update
+DELETE:	Delete

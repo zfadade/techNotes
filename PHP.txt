@@ -1,0 +1,103 @@
+PHP
+
+### Got rid of php in /usr/bin
+Renamed to xphp, xphp-config
+which php: /usr/local/bin/php
+
+http://www.programmerinterview.com/index.php/php-questions
+
+var_dump($var1, $var2, ...);
+  # display structured information (type and value)
+
+# magic functions
+__construct(), __destruct(), __call(), __callStatic(), __get(), __set(), __isset(), __unset(), __sleep(), __wakeup(), __toString(), __invoke(), __set_state(), __clone(), and __autoload()
+
+
+Lavavel: PHP Framework for Web Artisans
+Blade: templating engine for Laravel
+
+### Unit test
+class User_Test extends PHPUnit_Framework_TestCase
+  public function testCanDisableUser()
+  {
+    $this=>assertEquals()
+}
+
+$a == $b Equal TRUE if $a is equal to $b.
+$a === $b Identical TRUE if $a is equal to $b, and they are of the same type.
+
+
+Rather than accessing the $_GET and $_POST superglobals directly, you can make use of PHP functions like filter_input() and filter_input_array():
+<?php
+$my_string = filter_input(INPUT_GET, ‘my_string’, FILTER_SANITIZE_STRING);
+?>
+# This is roughly the same as retrieving $_GET[‘my_string’] and running it through a filter that strips HTML and other undesirable chars, i.e., data sanitation.
+
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);
+?>">
+
+include("afile.php")
+require "Services.php";
+# then, just call the method
+
+## Sessions:  
+# Each page that will use a session must begin by calling the session_start() function. The session_start() function tells PHP to either start a brand new session or access an existing one.
+
+# must be first thing on page
+<?php
+// Start the session
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+
+# Add values to session
+ $_SESSION['name'] = 'Jack';
+ $_SESSION['last_name'] = 'Lopez';
+
+
+
+# PHP regex:
+ // check if name only contains letters and whitespace
+ if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+   $nameErr = "Only letters and white space allowed";
+ }
+
+ # PHP debug: use these instead of print !
+ var_dump($a, ..);
+ print_r()
+
+ # PHP constants: automatically global and can be used across the entire script.
+ <?php
+define("GREETING", "Welcome to W3Schools.com!", true);  // true:  case-insensitive (default is false)
+?>
+
+## php-debug:
+Uses Xdebug
+
+brew install homebrew/php/php56-xdebug
+==> Installing php56-xdebug from homebrew/php
+==> Downloading http://xdebug.org/files/xdebug-2.3.3.tgz
+######################################################################## 100.0%
+==> /usr/local/opt/php56/bin/phpize
+==> ./configure --prefix=/usr/local/Cellar/php56-xdebug/2.3.3 --with-php-config=/usr/local/op
+==> make
+==> Caveats
+To finish installing xdebug for PHP 5.6:
+  * /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini was created,
+    do not forget to remove it upon extension removal.
+  * Validate installation via one of the following methods:
+  *
+  * Using PHP from a webserver:
+  * - Restart your webserver.
+  * - Write a PHP page that calls "phpinfo();"
+  * - Load it in a browser and look for the info on the xdebug module.
+  * - If you see it, you have been successful!
+  *
+  * Using PHP from the command line:
+  * - Run "php -i" (command-line "phpinfo()")
+  * - Look for the info on the xdebug module.
+  * - If you see it, you have been successful!
+==> Summary
+🍺  /usr/local/Cellar/php56-xdebug/2.3.3: 5 files, 264K, built in 33 seconds

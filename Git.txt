@@ -1,0 +1,69 @@
+Installed git (and thus gitk) with brew
+====
+git merge --abort is equivalent to git reset --merge when MERGE_HEAD is present.
+
+MERGE_HEAD is present when a merge is in progress.
+=======
+
+# Check out remote branch
+git fetch
+git checkout test
+
+# But if there are multiple remotes, must do:
+git checkout -b test remote-name/test
+
+# See what has been added, but not committed:
+git diff --staged
+
+# See what will be pushed:
+git push --dry-run
+
+# Double Dot: commits reachable from 2nd commit, but not in first
+# What is in HEAD but not in remote branch (i.e., what will be pushed)
+git log feature/CSPB-530201-remove-shelldedup-table..HEAD
+
+# All commits reachable from refA or refB, but not refC, i.e., what is NOT in my branch
+git log refA refB ^refC
+git log refA refB --not refC
+
+# Triple Dot: commits in either of two references, but not in both
+git log --left-right master...experiment
+# Output: shows that master has E<--F, whereas experiment has D<--E
+< F
+< E
+> D
+> C
+
+### git log
+git log --stat
+git log --pretty=oneline --stat -4
+
+git log --pretty=format:"%h %ae: %s " --stat --graph --date=short
+hist = log --pretty=format:'%h %ae: %s%d' --graph --date=short
+
+gitk &
+
+git branch -lr
+$ git checkout feature/sds-migration-integration-branch
+Branch feature/sds-migration-integration-branch set up to track remote branch feature/sds-migration-integration-branch from origin.
+Switched to a new branch 'feature/sds-migration-integration-branch'
+
+git fetch
+
+ # Path for files in Github:  Add the "blob"
+ https://ewegithub.sb.karmalab.net/ContentSystems/multisource-acquisition/blob/develop/core/orchestrator/src/main/resources/activation-by-source-provider.properties
+
+# stash
+git stash save "my_stash"
+git stash list
+git stash pop
+========
+git config --global credential.helper osxkeychain
+# Set git to use the osxkeychain credential helper
+The next time you clone an HTTPS URL that requires a password you will be prompted for your username and password, and to grant access to the OSX keychain. After you've done this, the username and password are stored in your keychain and you won't be required to type them in to git again.
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+PHP_Javascript
+
+PHP json_encode function is used to return a string containing the JSON equivalent of the value passed to it. You can then use the JavaScript JSON.parse method to safely handle the data and make it available in a form usable by JavaScript.
+
+JavaScript's JSON.parse method parses a JSON string and returns the JavaScript equivalent, e.g.:
+
+<script type="text/javascript">
+// Using JSON.parse on the output of json_encode.
+// PHP tags are enclosed in single quotes inside the JSON.parse function call since JSON uses double quotes for names and values.
+// Single quotes are not valid in JSON.
+var books = JSON.parse( '<?php echo json_encode($books); ?>' );
+
+
+# JSON.stringify method converts a JavaScript value into a JSON string:
+var ar = ['apple', 'orange', 'banana', 'strawberry'];
+var json = JSON.stringify(ar); // '["apple","orange","banana","strawberry"]'
+
+
+<?php
+$book = array(
+    "title" => "JavaScript: The Definitive Guide",
+    "author" => "David Flanagan",
+    "edition" => 6
+);
+?>
+<script type="text/javascript">
+var book = <?php echo json_encode($book, JSON_PRETTY_PRINT) ?>;
+/* var book = {
+    "title": "JavaScript: The Definitive Guide",
+    "author": "David Flanagan",
+    "edition": 6
+}; */
+alert(book.title);
+</script>
+
+
+# MDS way:
+$(document).ready (
+  /* This is the function that will get executed after the DOM is fully loaded */
+  function () {
+    console.log("init time");
+
+    $("#searchMovie").click(searchMovie);
+    var movieTitle = $("#movieTitle");
+
+    function searchMovie() {
+
+      console.log("movieTitle" + movieTitle);
+      var title = movieTitle.val();
+      console.log("searchMovie: " + title);
+    }
+  } );
+
+  # Here is another way of doing it:
+    /* This is the function that will get executed after the DOM is fully loaded */
+  (function () {
+
+    $(init);
+    function init() {
+      console.log("init time");
+
+      $("#searchMovie").click(searchMovie);
+      var movieTitle = $("#movieTitle");
+
+      function searchMovie() {
+
+        console.log("movieTitle" + movieTitle);
+        var title = movieTitle.val();
+        console.log("searchMovie: " + title);
+      }
+    }
+  }) ();
+
+  # Another way:
+  // Since init is a function, jQuery interprets this as an event handler.
+// So will only get invoked when object model has completed loading
+jQuery(init);
+
+function init () {
+  console.log("I am loaded");
+}
+
+##### PHP security (PHP >= 5.5) ####
+$password = password_hash($password, PASSWORD_BCRYPT);
+
+PASSWORD_BCRYPT - Use the CRYPT_BLOWFISH algorithm to create the hash. This will produce a standard crypt() compatible hash using the "$2y$" identifier. The result will always be a 60 character string, or FALSE on failure.
+
+Ex:
+<?php
+/**
+ * In this case, we want to increase the default cost for BCRYPT to 12.
+ * Note that we also switched to BCRYPT, which will always be 60 characters.
+ */
+$options = [
+    'cost' => 12,
+];
+//  password_hash() returns a string that contains both the hash and the salt.
+// Insert $hashAndSalt into database against user
+var $hashAndSalt = password_hash("rasmuslerdorf", PASSWORD_BCRYPT, $options);
+?>
+
+// Fetch hash+salt from database, place in $hashAndSalt variable
+// and then to verify $password:
+if (password_verify($password, $hashAndSalt)) {
+   // Verified
+}
+
+
+##### Redirection ######
+Javascript redirects when the document loads, PHP redirects when PHP starts parsing the PHP code, .htaccess (on Apache servers) redirects as soon as the request comes in. The sooner you redirect the better, and remember to send the right code (301 or 302 etc).
+
+If you want to instantly redirect a user to another page without him seeing anything of a site in between, you should use the PHP header redirect method.
+
+If you have a Javascript and some action of the user has to result in him entering another page, that is when you should use window.location.
+
+
+# JavaScript:
+if(something){
+    window.location.href = 'http://www.site.com/';
+}
+
+# PHP:
+header('Location: index.php?action=deleted');
+
+# PHP misc info
+The standard PHP interpreter, powered by the Zend Engine, is free software released under the PHP License. PHP has been widely ported and can be deployed on most web servers on almost every operating system and platform, free of charge.[7]
+
+The PHP language evolved without a written formal specification or standard until 2014, leaving the canonical PHP interpreter as a de facto standard
+
+
+
+
+

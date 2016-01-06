@@ -1,0 +1,26 @@
+# jQuery:  iterate
+allPs.each(function(event, elem) {
+    console.log(elem);
+    var p = $(elem);   // convert raw-html object into jQuery
+    var html = p.html();  // gets html.  NOTE: html(str) sets the html
+});
+
+# another iterate:
+for (var i in pages)
+
+# AJAX
+
+
+
+
+
+
+# MyAPIFilms
+http://api.myapifilms.com/imdb.do:
+
+# My token 
+aaf0e92c-d7c7-41a9-9466-dfdb6d69b10c
+
+http://api.myapifilms.com/imdb/idIMDB?title=matrix&token=aaf0e92c-d7c7-41a9-9466-dfdb6d69b10c
+
+

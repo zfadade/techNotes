@@ -1,0 +1,124 @@
+JUnit
+
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+# Junit:
+@RunWith(Parameterized.class)
+@Category({Nightly.class})
+public class AttributeValueNormalizationTest extends MultiSourceFixture {
+
+# Junit Argument matcher ???
+    private void testPcp(StatusType inStatus, PropertyContextState expectedState) throws ProcessorGenericException {
+        when(statusInfo.getStatus()).thenReturn(inStatus);
+        propertyContextProcessor.process(activationContext);
+        ArgumentCaptor<PropertyContextEvent> reportedStatusArgument = ArgumentCaptor.forClass(PropertyContextEvent.class);
+        verify(eventLogger, times(1)).logEvent(reportedStatusArgument.capture());
+        PropertyContextEvent propertyContextEvent = reportedStatusArgument.getValue();
+        assertEquals(expectedState, propertyContextEvent.getState());
+    }
+
+# any() with generics
+when(configurationReaoder.read(anyString(), Matchers.<Consumer<Properties>>any())).thenReturn(new Properties());
+
+
+### RunWith:
+@RunWith(MockitoJUnitRunner.class)
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AbstractRepositoryTest.SpringDataConfiguration.class)
+
+@RunWith(MockitoJUnitRunner.class)
+public class ContentProcessorConsumerTest {
+
+    @InjectMocks    // <======
+    private ContentProcessorConsumer testee;
+
+    @Mock
+    private EventProcessor<ActivationContext, StatusTypeBarrier, Void> eventProcessor;
+
+########### Capturing arguments:  ###########
+
+@RunWith(MockitoJUnitRunner.class)
+public class ContentProcessorConsumerTest {
+@Captor
+    private ArgumentCaptor<ActivationContext> activationContext;
+
+    ...
+
+        verify(eventProcessor, times(1)).process(activationContext.capture());
+        assertEquals(contentId, activationContext.getValue().getContentId());
+    }
+
+
+###### Argument captor:  OLD WAY
+@Test
+public void whenNotUseCaptorAnnotation_thenCorrect() {
+    List mockList = Mockito.mock(List.class);
+    ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
+
+    mockList.add("one");
+    Mockito.verify(mockList).add(arg.capture());
+
+    assertEquals("one", arg.getValue());
+}
+
+# Argument captor:  NEW WAY @Captor f – to create an ArgumentCaptor instance:
+
+@Mock
+List mockedList;
+
+@Captor
+ArgumentCaptor argCaptor;
+
+@Test
+public void whenUseCaptorAnnotation_thenTheSam() {
+    mockedList.add("one");
+    Mockito.verify(mockedList).add(argCaptor.capture());
+
+    assertEquals("one", argCaptor.getValue());
+}
+
+
+######  InjectMocks:  use @InjectMocks to inject both @Spy and @Mock instances  ########
+@Mock
+Map<String, String> wordMap;
+
+@InjectMocks
+MyDictionary dic = new MyDictionary();
+
+@Test
+public void whenUseInjectMocksAnnotation_thenCorrect() {
+    Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
+
+    assertEquals("aMeaning", dic.getMeaning("aWord"));
+}
+
+
+public class MyDictionary {
+    Map<String, String> wordMap;   <-----------
+
+    public MyDictionary() {
+        wordMap = new HashMap<String, String>();
+    }
+    public void add(final String word, final String meaning) {
+        wordMap.put(word, meaning);
+    }
+    public String getMeaning(final String word) {
+        return wordMap.get(word);
+    }
+}
+
+
+
+
+
+
+

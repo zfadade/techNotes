@@ -1,0 +1,142 @@
+Jose Annunziato
+Northeastern University, College of Computer and Information Science
+http://www.ccs.neu.edu
+CS5200
+CS5610:  Web Dev (?)
+CS5610 Fall 2015 Lecture:  lots with this title
+CS4550: HTML, CSS, JavaScript, XML, JSON, PHP, and SQL (XAMP/WAMP)
+
+
+Web Development (CS5610) – MongoDB, AngularJS, Node.js, ASP.NET, C#, jQuery, HTML5
+Introduction to Databases (CS5200) – MongoDB, MS SQL, MySQL, JPA, UML, XML
+
+# CS5610 Introduction to Responsive Design streamed Jan 23, 2015
+https://youtu.be/0qtDzdavqdQ
+
+# CS5610 - 1/30/2015 - Intro to Bootstrap streamed Jan 30, 2015
+https://youtu.be/RX7BnPVdNOc
+
+√ # Web Dev - jQuery Introduction stramed Feb 04, 2015 CS4550
+https://youtu.be/ZMQD_X0uaE0
+
+√ # Web Dev - 2/5/2015 - jQuery Intro streamed Feb 05, 2015 CS4550
+[jQuery UI]
+https://youtu.be/aNpqDq6lwTg
+
+√ # Web Dev Query UI Into (done) streamed live Feb 06, 2015:
+https://youtu.be/eTUstNknCrw
+
+# Web Dev - 5610 - Hosting a MEAN Stack Web Application in the Cloud (OpenShift) streamed Feb 07, 2015
+https://youtu.be/WGnQAgk2dz4
+
+# Web Dev - Introduction to AngularJS streamed live Feb 11, 2015
+https://youtu.be/KCTKd5ZmXMQ
+
+√ # Web Dev - jQuery, AJAX, JSON, JSONP, Web APIs streamed Feb 11, 2015 CS5610
+https://youtu.be/mErJ3HFWZHs
+
+# Web Dev - jQuery, AJAX, Web API streamed Feb 12, 2015
+https://youtu.be/60lDnmMBuzk
+
+# Web Dev - Introduction to AngularJS streamed live Feb 17, 2015
+https://youtu.be/iT5rwGcEAYs
+
+# Web Deb - 5610 - AngularJS Routing streamed Feb 18, 2015
+Web Deb - 5610 - AngularJS Routing
+
+# Web Dev - 4550 - AngularJS Routing streamed Feb 19, 2015
+https://youtu.be/82xIKdQUArM
+
+# Web Dev - 5610 - Introduction to AngularJS Routing streamed live Feb 20, 2015
+https://youtu.be/PlAxG8R_zXI
+
+# Web Dev - 4550 - Introduction to NodeJS and Express streamed Feb 24, 2015
+https://youtu.be/6PsHKXHJRcs
+
+# 5610: Introduction to NodeJS & Express JS streamed live Feb 25, 2015
+https://youtu.be/Lnd_uSEpCdo
+
+# Web Dev - 4550 - Deploying NodeJS Apps on OpenShift streamed Feb 26, 2015
+https://youtu.be/wnRtA7a0ST0
+
+# CS5200 - 3/4/2015 - JDBC streamed Mar 05, 2015
+CS5200 - 3/4/2015 - JDBC
+
+# Web Dev - 4550 - MongoDB and NodeJS on OpenShift streamed Mar 05, 1015
+https://youtu.be/34951nhtQco
+
+# Web Dev - 5610 - Simple MongoDB, NodeJS on OpenShift streamed March 06, 2015
+https://youtu.be/c-etW7AX9cA
+
+# Web Dev - CS4550 - Simple MEAN plus Passport JS Authentication
+https://youtu.be/-K3ujjyFn_A
+
+# Web Dev - CS4550 - Introdunction to PassportJS streamed live Mar 19, 2015
+# see comments: code on github
+https://youtu.be/jtaSRzP0i30
+
+# Web Dev - CS5610 - Introduction to PassportJS streamed Mar 20, 2015
+https://youtu.be/8GL5WpQ0vfo
+
+# CS5200 - Web Services streamed live April 08, 2015
+https://youtu.be/lnQ3XzYH0vw
+
+# CS5200 - Intro to MongoDB and the MEAN Stack streamed April 15, 2015
+https://youtu.be/8M8gt6R_gmM
+
+# Simply MEAN published June 18, 2015
+https://youtu.be/C6Rf_K6OE8g
+
+# Use jQuery AJAX to Query IMDB REST Web API (pub. Oct 06, 2015)
+CS5610 Fall 2015 Lecturehttps://youtu.be/suHY8dLKzCU
+
+# AngularJS & Web APIs
+https://www.youtube.com/watch?v=Kan1sMNOlIc
+
+# Create a Node.js Web project on OpenShift published Sept 09, 2015
+# 9 minutes, no sound
+https://youtu.be/WgbttvfTq0w
+
+# [Into to JavaScript] streamed live Sept 28, 2015
+https://youtu.be/lF7PBVxIiZs
+
+
+# [use routings. implement movie search] streamed live Oct 26, 2015
+https://www.youtube.com/watch?v=M5qH9QqYoLo
+
+#  [Uses Angular, Node, mongoDb] streamed live Nov 02, 2015
+https://www.youtube.com/watch?v=sWbJqsj7hjw
+
+#  Databases; streamed live on Nov 05, 2015
+https://www.youtube.com/watch?v=rd4Y24yWyOk
+
+# [Assignment] streamed live Nov 16, 2015
+https://youtu.be/BnZmTxt58Tc
+
+# [Passport js, oauth] streamed live Nov 19, 2015
+https://youtu.be/LfFcjEaXmZg
+
+# [remote vs local?] streamed live Nov 23, 2015
+https://youtu.be/BRlrWiJRNDw
+
+# CS5610 Fall 2015 Lecture streamed Nov 30, 2015
+https://youtu.be/UXJSltppuJQ
+
+############  2014 ############
+
+# NodeJS / MongoDB Lecture (Sept 29, 2014)
+https://www.youtube.com/watch?v=kw3GZGxowGM
+
+# Simple MEAN Web Application streamed Oct 01, 2014
+https://youtu.be/QvSC2wHjyAY
+
+# CS5610 Publish to OpenShift streamed Oct 06, 2014
+https://youtu.be/7m-nSxSSCno
+
+# CS5200 Java JSON HTTP Web Service Client streamed Oct 09, 2014
+# 2:34 long !
+https://youtu.be/XcrJVYrTGBk
+
+# CS5200 - RESTful Web Services streamed on Nov 20, 2014
+# 3 hours, 17 minutes !
+https://youtu.be/zETD4ZAEXgE

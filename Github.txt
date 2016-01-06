@@ -1,0 +1,17 @@
+
+###### Github ######
+Activate file finder by pressing t. Start typing to filter the file list. Use ↑ and ↓ to navigate, enter to view files.
+
+#  git remote add origin remote repository URL
+git remote add origin git@github.com:zfadade/blog_php.git
+git remote -v
+git push origin master
+
+
+To push an existing repository from the command line
+
+git remote add origin https://github.com/azsiner/simple-ttt.git
+git push -u origin master
+
+To clone on desktop:
+https://github.com/azsiner/simple-ttt.git

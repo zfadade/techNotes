@@ -1,0 +1,110 @@
+
+### Deploy to lok4 via Jenkins !
+https://jenkins.karmalab.net/jenkins/view/CS/view/MULTISOURCE/view/ACQUISITION/view/MISC/job/CS.MULTISOURCE.ACQUISITION.MANUAL-DEPLOY/
+
+branch:  feature/XXXXX
+environment: loki4
+playbook:  deployShellIDProcessor.yml
+
+
+Or deploy from our deploy server; it's much faster:
+ssh http://phel142e970f677.karmalab.net/
+cd asiner
+
+ansible-playbook -u s-ansible --private-key=/home/jenkinscorp/s-ansible-id_rsa -i inventory/ecoslab-3pac-jenkins-feature -c ssh cleanCassandra.yml
+
+=============================
+## How to debug (e.g., smoketest failure):
+  smokeTests.yml:  comment out all but the test that I want to run:
+    - include: smokeTests/shellDedupingReport.yml
+
+    mvn clean install (from deploy
+    ansible-playbook -k -K -u asiner -i inventory/loki4 smokeTests.yml
+
+## Debug examples:
+# Example that prints the loopback address and gateway for each host
+- debug: msg="System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+
+- debug: msg="System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}"
+  when: ansible_default_ipv4.gateway is defined
+
+- shell: /usr/bin/uptime
+  register: result
+
+- debug: var=result
+
+- name: Display all variables/facts known for a host
+  debug: var=hostvars[inventory_hostname]
+
+=======================
+cd multisource-acquisition/deploy/target/deploy-1.27.0-SNAPSHOT
+
+ansible-playbook -k -K -u asiner -i inventory/loki4 deployShellDedupingReportProcessor.yml
+
+src/main/scripts/deployShellDedupingReportProcessor.yml
+======================
+
+Where are ... ?
+multisource-acquisition/deploy/src/main/scripts/roles
+multisource-acquisition/deploy/src/main/scripts/deployAll.yml
+======================
+[Example (from shellDedupingReport.yml):]
+- name: Verify that folder mounts and access for Shell Deduping Report Processor
+   ...
+  vars:
+    - testFiles: [
+        '{{ shellDedupReportPullDataPath }}/in/smokeTest',
+        '{{ shellDedupReportPushDataPath }}/out/smokeTest',
+        '{{ shellDedupReportPushDataPath }}/archive/smokeTest'
+      ]
+
+  # need this import for shellDedupReportPushDataPath, shellDedupReportPullDataPath
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Test write access to mounted folders
+      file: path={{ item }} state=touch owner={{ user }} group={{ group }}    <======== user and group defined in all.yml (included)
+      with_items: testFiles               <====== loop thru testFiles.  Each one is called "item".  So this task gets executed 3 times
+
+    - name: Get the status of the created files
+      stat: path={{ item }}         <====== Call stat with arg of path set to this item
+      register: statResult          <====== save output of "stat" command in "statResult" variable
+      with_items: testFiles         <====== loop thru testFiles.  Each one is called "item".  So this task gets executed 3 times
+
+    - name: Verify that files exist
+      fail:
+      when: "not {{ item.stat.exists }}"
+      with_items: statResult.results <====== Why results?
+
+     - name: Verify that files exist
+      fail:
+      when: "not {{ item.stat.exists }}"
+      with_items: statResult.results
+
+
+Precedence of variables:
+
+role defaults [1]
+inventory vars [2]
+inventory group_vars
+inventory host_vars
+playbook group_vars
+playbook host_vars
+host facts
+registered vars
+set_facts
+play vars
+play vars_prompt
+play vars_files
+role and include vars
+block vars (only for tasks in block)
+task vars (only for the task)
+extra vars
+Basically, anything that goes into “role defaults” (the defaults folder inside the role) is the most malleable and easily overridden. Anything in the vars directory of the role overrides previous versions of that variable in namespace. The idea here to follow is that the more explicit you get in scope, the more precedence it takes with command line -e extra vars always winning. Host and/or inventory variables can win over role defaults, but not explicit includes like the vars directory or an include_vars task.
+
+Variable Scopes:
+Global: this is set by config, environment variables and the command line
+Play: each play and contained structures, vars entries, include_vars, role defaults and vars.
+Host: variables directly associated to a host, like inventory, facts or registered task outputs
+

@@ -1,0 +1,17 @@
+Package Managers
+
+
+#  Bower:  run these commands where I want packages installed
+bower list
+bower update
+
+# The --save flag tells Bower to add the package to the bower.json file for future reference.
+bower install jquery --save
+bower install jquery-ui --save
+
+# gem: for ruby
+sudo gem install rhc
+
+sudo gem update
+
+

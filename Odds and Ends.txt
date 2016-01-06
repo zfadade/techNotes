@@ -1,0 +1,9 @@
+Odds and Ends
+
+"spinal-case" -- especially in the web-dev. world.
+
+Underscores are apparently called "snake_case"
+
+ctags:
+    cd my_project_dir
+    ctags -R --language=php

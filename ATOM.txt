@@ -1,0 +1,31 @@
+ATOM.txt
+# Install package from terminal
+apm install <package-name>
+
+Command Palette:  cmd-shift-P
+Switch between files:  cmd-T
+
+Add Project Folder:  cmd-shift-O
+
+Color-picker: Right click or press CMD-SHIFT-C/CTRL-ALT-C to open it.
+
+Beautify:  Ctrl + Alt + b
+Show Markdown:  ctl-shift-M
+
+Highlight Selected:  Ctrl + Cmd + H (toggles it)
+
+Jump to symbol:  cmd-r (cmd-t; fuzzy)
+Go to definition under cursor: ctrl-alt-down 
+
+Last cursor position:
+    alt-- to travel to previous cursor position
+    alt-_ to undo previous travel
+Goto last edit:  ctrl+i
+Goto line:  ctrl+g
+
+Tree:  cmd-\
+Grammar Selector: ctrl-shift-L
+Settings panel: cmd -
+Developer Tools:  alt-cmd-I
+
+

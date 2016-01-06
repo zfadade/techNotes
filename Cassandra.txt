@@ -1,0 +1,76 @@
+Cassandra:
+
+Data:
+/opt/data/cassandra/data
+
+Config:
+/etc/dse/cassandra/cassandra.yaml
+
+Solr:
+http://phelmsnode004.karmalab.net:8983/solr/#/lodgingdirectory.globalidmapping/query
+
+
+CQL:  Use <tab> <tab> for help.
+	ssh <host_from_inventory>
+	cqlsh
+		use <keyspace>
+
+DESC KEYSPACES, etc.
+SELECT …
+
+# Here's how to add a natural key and hotel name into raw data base:
+use contentrfd ;
+select srcid, prvdrid, extid from contentrfd.shellinfobykeys limit 20 ;
+
+ insert into propertyidentity (srcid, prvdrid, extid, name) VALUES ( 'wotif', 'wotif', 'Abigail', {'en_CA' : 'Pinneaple Hotel' } );
+
+select srcid, prvdrid, extid , name from propertyidentity where srcid = 'wotif' and prvdrid = 'wotif' and extid ='Abigail';
+
+# raw data:
+select srcid, prvdrid, extid, name from sourcedata.propertyidentity where srcid = 'wotif' and prvdrid = 'wotif' and extid ='Abigail2';
+
+# RFD table:
+select srcid, prvdrid, extid , name from contentrfd.shellinfobykeys where srcid = 'wotif' and prvdrid = 'wotif' and extid ='Abigail2';
+
+CREATE CUSTOM INDEX shellstaging_shellexternaldedup_addln1_index ON shellstaging.shellexternaldedup (addln1) USING 'com.datastax.bdp.search.solr.Cql3SolrSecondaryIndex';
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:propertyImportRequest xmlns:ns2="http://expedia.com/cs/import/v1">
+    <requestContext>
+        <clientID>abcd</clientID>
+        <requestID>12345678910</requestID>
+    </requestContext>
+    <property uuid="test-demo-jumbo" sourceID="jumbotours" providerID="jumbotours" externalID="errata-demo" active="false">
+        <identity>
+            <structureType>struct1</structureType>
+            <name localeID="en_US">testvalue</name>
+            <name localeID="en_US">testvalue2</name>
+            <address type="Type" country="USA" localeID="en_US" postalCode="postal code">
+                <city>city</city>
+                <line1>1000000 Pineapple Farm Road</line1>
+                <coordinates source="source" latitude="23.4499" longitude="159.0099" estimate="false"/>
+                <state>state</state>
+            </address>
+            <phone type="phone">1231234</phone>
+            <phone type="fax">4567890</phone>
+            <email type="emailType">emailValue</email>
+            <email type="emailType2">emailValue2</email>
+            <airport>airportCodes</airport>
+            <brand>brandValues</brand>
+            <chain>chain1</chain>
+            <additionalInformation>
+                <name>FacilitiesV2</name>
+                <value>206,208.225,10,12?14,19,206,65,66,15;16,morning-call,99999</value>
+                <description>additonalInfoDesc - Facility</description>
+            </additionalInformation>
+        </identity>
+        <content localeID="en_US">
+            <paragraph code="introEditor" order="1">Intro paragraph</paragraph>
+            <paragraph code="ERRATA" order="1">GAY: The property do not provide picnics.</paragraph>
+            <paragraph code="ERRATA" order="1">NUDIST: GROUP BOOKINGS MUST BE REQUESTED TO OUR RESERVATIONS DEPARTMENT</paragraph>
+            <paragraph code="ERRATA" order="1">IMPORTANT: Important details here</paragraph>
+            <paragraph code="ERRATA" order="1">NOT AVAILABLE FACILITIES: GALA DINNERS: No parking.</paragraph>
+        </content>
+    </property>
+</ns2:propertyImportRequest>

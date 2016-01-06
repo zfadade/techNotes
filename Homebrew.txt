@@ -1,0 +1,25 @@
+The easiest way to install various Unix tools and open source software onto Mac OS X is via a package manager:
+
+brew update && brew upgrade
+
+
+brew update			# updates Homebrew
+brew doctor
+brew search			# search for application
+brew install <app>		# e.g, git
+brew list
+brew remove <app>
+brew outdated - list outdated packages
+brew update && brew upgrade - update brew and packages
+
+Installs into /usr/local
+
+Error:  Could not symlink share/git-core/contrib /usr/local/share/git-core is not writable
+
+Solution:
+Maybe you use sudo to install some application before ,So the owner of dictionary /usr/local/share/ and /usr/local/lib become root
+
+
+sudo chown -R $(whoami) /usr/local/share/
+
+sudo chown -R $(whoami) /usr/local/lib

@@ -1,0 +1,37 @@
+LAMP MAMP
+
+# phpmyadmin
+http://localhost/~enfinds/phpmyadmin/index.php
+http://localhost/phpmyadmin/index.php
+
+# MySQL:
+mysql -h localhost -V   # version
+
+mysqladmin -u root -p shutdown
+mysql -u root -p
+
+UPDATE `to_do` SET `due_date`= CURDATE() WHERE id = 1;INSERT INTO `to_do`( `task`, `who`, `due_date`) VALUES ('ASDM End-of-Year info for accountant', 'ASD', '20151218');
+
+SELECT * FROM `to_do` WHERE due_date <= '2015-12-16'
+
+# Apache
+httpd -v  # gives version
+sudo apachectl start/stop/restart
+
+# start automatically when booting:
+sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
+# do NOT start Apache when booting:
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
+sudo apachectl start
+
+# Check if starts automatically:
+launchctl list|grep apache
+URL:
+http://localhost/
+http://localhost/~enfinds/
+
+# URLs
+http://localhost/~enfinds/phpinfo.php
+

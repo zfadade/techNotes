@@ -1,0 +1,42 @@
+New Technologies
+
+Amazon Web Services
+Ansible
+Jinja
+
+Docker
+   Hub
+    Repository
+Kafka
+Nexus
+SpringBoot
+  Eg EventProcessorAutoCongiguration
+
+Zookeeper
+Hubble
+    StatD
+    Collects
+Yaml 
+Data stacks
+Jenkins
+
+Amazon S3
+Spark
+Micro services architecture 
+Spring boot executable jar
+Docker
+Google Flatbuffer
+MVEL
+AWS
+codahale 
+Fluent Java 
+Kafka topic
+
+
+Snagit
+ParallelsDesktop
+SelfService
+OS X keychain
+Maven-check style-plugin
+Ansible continuos delivery
+Sonar 

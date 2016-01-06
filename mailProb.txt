@@ -1,0 +1,48 @@
+
+Some ISPs block port 25 for customers to prevent spamming and require you to use an smtp-relay. 
+
+Fixed the problem!
+/var/log/mail.log:
+
+enfinApple.local postfix/smtp[8706]: 3EF0E1371F84: to=<mdemontes@yahoo.com>, relay=smtp.gmail.com[74.125.207.108]:587, delay=397, delays=395/0/0.63/0.94, dsn=2.0.0, status=sent (250 2.0.0 OK 1452037209 p8sm16974608ioe.38 - gsmtp)
+
+========
+A MUA knows the outgoing mail SMTP server from its configuration. An SMTP server acting as client, i.e. relaying, typically determines which SMTP server to connect to by looking up the MX (Mail eXchange) DNS resource record for each recipient's domain name. Conformant MTAs (not all) fall back to a simple A record in case no MX record can be found. Relaying servers can also be configured to use a smart host.
+
+An SMTP server acting as client initiates a TCP connection to the server on the "well-known port" designated for SMTP: port 25. MUAs should use port 587 to connect to an MSA. The main difference between an MTA and an MSA is that SMTP Authentication is mandatory for the latter only.
+
+# 
+# hostname
+    enfinApple.local
+
+# Query DNS nameserver(s)
+
+#dig will let you perform any valid DNS query, the most common of which are:
+
+    A (the IP address),
+    TXT (text annotations),
+    MX (mail exchanges), and
+    NS nameservers.
+
+dig enfinApple.local.com
+
+###  http://wonk.com/SecureAuth.html
+Q. My ISP blocks port 25, and tells me I should use only use smtp.theirserver.com to send mail. What should I do?
+
+A. USE SMTP AUTH Configure your mail client to use your Wonk.com - hosted SMTP server but change the SMTP port from 25 to 587 and require SMTP AUTHENTICATION (SMTP AUTH). Essentially this means that in addition to using another port (587), your email program uses your id and password each time that it sends email.
+
+Port 25 SMTP historically was used for both sending mail directly to a final mail server or relay, as well as for authenticated E-mail. ISPs blocking port 25 keeps spammers and viruses from sending mail directly to targeted mail servers, so it is now recommended to use port 587 for mail submission, and blocking port 25 from untrusted hosts. Sending mail through your ISP's mail server using any E-mail address other than the one your ISP provided violates Sender Policy Framework, so your mail will be identified as spam by many systems. If your ISP is blocking port 25 to reduce spammer abuse of their network Using port 587 will work around the problem.
+
+# When using gmail as SMTP, need to you select the option, “Access for less secure app” allowed:
+https://www.google.com/settings/security/lesssecureapps
+
+
+    # After changing password info
+    sudo postmap /etc/postfix/sasl_passwd
+    sudo postfix stop
+    sudo postfix start
+    postconf -n 
+
+    postfix reload (after editing main.cf)
+
+

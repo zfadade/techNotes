@@ -1,0 +1,12 @@
+
+
+### MySQL
+
+mysql -u root -p
+
+
+CREATE DATABASE blog_tutorial;
+USE blog_tutorial;
+SOURCE /Users/enfinds/git/simple-blog-part-1-build/db.sql
+
+SHOW tables;

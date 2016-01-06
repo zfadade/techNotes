@@ -1,0 +1,46 @@
+
+Linux
+
+System log files:  
+    /var/log
+
+#  Shebang:
+#!/usr/bin/env python
+
+# Copy file from remote machine
+scp asiner@phelmsnode006.karmalab.net:/home/asiner/ReportTemplate.xlsx .
+
+# Copy local file to remote machine
+scp ./target/exhibitor-XXX.jar [username]@[kafka server]:~
+
+# Generate project structure tree
+tree -d -L 3 -I src\|target\|log*\|bin\|templates
+
+# Recursively change permissions
+find . -type d -exec chmod 755 {} \;
+
+# Find "old" files and delete
+find {{ shellDedupReportPushDataPath }}/out -name "*.xlsx" -type f -mtime +30 -delete"
+
+# Turn off Spotlight indexing
+sudo mdutil -a -i off
+
+# Change ownership recursively
+sudo chown -R $(whoami) /usr/local/lib
+
+# Problem setting PATH when there is space in dir name
+# ln -s {target-filename} {symbolic-filename}
+ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/sublime/bin/subl
+
+PATH=$PATH:/usr/local/sublime/bin
+
+# Set permissions for Websites, so 
+# enfinds is owner, with write permissions; group _www can read/enter/execute_
+sudo chown /Library/WebServer/Documents enfinds:_www
+sudo chmod -R go-rwx Documents
+sudo chmod -R g+rx Documents
+
+# ldd:  
+Mac OS X equivalent of the Linux ldd command is otool -L
+
+

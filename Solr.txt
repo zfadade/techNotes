@@ -1,0 +1,21 @@
+Solr
+
+Solr:
+http://phelmsnode004.karmalab.net:8983/solr/#/lodgingdirectory.globalidmapping/query
+
+
+Solr Schemas:
+/opt/data/cassandra/data/solr.data
+
+https://docs.lucidworks.com/display/solr/Query+Screen
+
+fq: filter query
+sort
+
+fl:  field list
+[Ex:] Return only these 3 fields:
+    id name price
+    id, name, price
+
+# Change field name of price to sale_price
+fl=id,price:sale_price
